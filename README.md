@@ -24,44 +24,43 @@ The project boilerplate has been created using [go-wagen](https://github.com/gro
     ```
 
 ## APIs
----
 
-#### GET `/`
+#### 1. GET `/`
 Sample `Hello World` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
-#### GET `/ping`
+#### 2. GET `/ping`
 Sample `ping` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
-#### GET `/urandom`
+#### 3. GET `/urandom`
 HTTP service to emulate *nix device `/dev/urandom`
 
-Supported Query Parameters
+   Supported Query Parameters
+    
+   `length` - Number of bytes of data to be returned. Default value: `1024`.
 
-`length` - Number of bytes of data to be returned. Default value: `1024`.
-
-#### GET `/fbsdrandom`
+#### 4. GET `/fbsdrandom`
 HTTP service to emulate the FreeBSD device `/dev/urandom`
 
-Supported Query Parameters
+   Supported Query Parameters
 
-`length` - Number of bytes of data to be returned. Default value: `1024`.
+   `length` - Number of bytes of data to be returned. Default value: `1024`.
 
 _Please Note: This API sends data as `application/octet-stream`._
 
-#### GET `/password`
+#### 5. GET `/password`
 HTTP service to generate a strong password
 
-Supported Query Parameters
+   Supported Query Parameters
 
-`format` - Data output format (`json`, `raw`). Default: `json`
+   `format` - Data output format (`json`, `raw`). Default: `json`
 
-`length` - Length of the generated password
+   `length` - Length of the generated password
 
-`digits` - Minimum number of digits to have in the generated password
+   `digits` - Minimum number of digits to have in the generated password
 
-`symbol` - Minimum number of symbols to have in the generated password
+   `symbol` - Minimum number of symbols to have in the generated password
 
-`lowercase` - Boolean value to ensure if the generated password needs to have lowercase alphabets only
+   `lowercase` - Boolean value to ensure if the generated password needs to have lowercase alphabets only
 
-`repeated` - Boolean value to ensure if the generated password string will have repeated characters or not
+   `repeated` - Boolean value to ensure if the generated password string will have repeated characters or not
 
