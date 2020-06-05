@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  generator:
+    container_name: generator
+    build:
+      context: ..
+      dockerfile: ./deploy/Dockerfile
+    working_dir: /go/src/generator
+    entrypoint: go run ./cmd/generator/generator.go
+    environment:
+      - APP_ENV=local
+    stop_signal: SIGINT
+    volumes:
+      - ./..:/go/src/generator
+    ports:
+      - 8000:8000
+    networks:
+      - generator-net
+
+  tests:
+    build:
+      context: ..
+      dockerfile: ./deploy/Dockerfile
+    working_dir: /var/www/generator
+    command: go test -v ./...
+    volumes:
+      - ./..:/var/www/generator
+
+  linter:
+    image: golangci/golangci-lint:latest
+    working_dir: /app
+    command: golangci-lint run -v
+    volumes:
+      - ./..:/app
+
+networks:
+  generator-net:
+    driver: bridge
