@@ -2,22 +2,24 @@ package handlers
 
 import (
 	"encoding/base64"
+	"generator/utils"
 	log "github.com/sirupsen/logrus"
-	"net/http"
-	"strconv"
-	"time"
 	"math/rand"
+	"net/http"
+	"time"
 )
 
 // Original Concept by: https://github.com/backwardspy/dev-urandom-as-a-service/blob/master/rando.go
 
 type Urandom struct {
 	l *log.Logger
+	u *utils.Utils
 }
 
 func NewUrandom(l *log.Logger) *Urandom{
 	return &Urandom{
 		l: l,
+		u: utils.New(),
 	}
 }
 
@@ -34,13 +36,7 @@ func (u *Urandom) Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	maxbytesStr := r.Header.Get("Max-Bytes")
-	maxBytes, maxBytesErr := strconv.ParseInt(maxbytesStr,10, 64)
-	if maxBytesErr != nil {
-		u.l.Warnf("Error converting \"maxbytes\" + to int64. %s", maxBytesErr.Error())
-		u.l.Warnf("Setting maxBytes = 1024")
-		maxBytes = 1024
-	}
+	maxBytes := u.u.ParseInt(r.URL.Query().Get("length"), 1024)
 
 	w.Header().Add("Content-Language", "en")
 

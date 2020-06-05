@@ -64,6 +64,9 @@ func main() {
 	fbsdRand := handlers.NewFreebsdrandom(logger)
 	r.Get("/fbsdrandom", fbsdRand.Handler)
 
+	passgen := handlers.NewPassgen(logger)
+	r.Get("/password", passgen.Handler)
+
 	httpErr := make(chan error, 1)
 	go func() {
 		logger.Info(fmt.Sprintf("Started server on %s:%s..", host, port))

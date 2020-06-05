@@ -1,20 +1,22 @@
 package handlers
 
 import (
-	"github.com/z9905080/freebsdrandom"
+	"generator/utils"
 	log "github.com/sirupsen/logrus"
+	"github.com/z9905080/freebsdrandom"
 	"net/http"
-	"strconv"
 	"time"
 )
 
 type Freebsdrandom struct {
 	l *log.Logger
+	u *utils.Utils
 }
 
 func NewFreebsdrandom(l *log.Logger) *Freebsdrandom{
 	return &Freebsdrandom{
 		l: l,
+		u: utils.New(),
 	}
 }
 
@@ -29,13 +31,7 @@ func (u *Freebsdrandom) Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	maxbytesStr := r.Header.Get("Max-Bytes")
-	maxBytes, maxBytesErr := strconv.Atoi(maxbytesStr)
-	if maxBytesErr != nil {
-		u.l.Warnf("Error converting \"maxbytes\" + to int64. %s", maxBytesErr.Error())
-		u.l.Warnf("Setting maxBytes = 1024")
-		maxBytes = 1024
-	}
+	maxBytes := u.u.Atoi(r.URL.Query().Get("length"), 1024)
 
 	w.Header().Add("Content-Language", "en")
 	w.Header().Add("Content-Type", "text/plain")
