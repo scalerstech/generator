@@ -82,3 +82,23 @@ HTTP service to generate a strong password
 * `lowercase` - Boolean value to ensure if the generated password needs to have lowercase alphabets only
 
 * `repeated` - Boolean value to ensure if the generated password string will have repeated characters or not
+
+### 6. POST `/encrypt`
+
+HTTP Service to encrypt a string using a password.
+
+#### Sample POST body
+
+```
+{"data":"This text will be encrypted", "encpass":"ThisPasswordWillBeUsedToEncryptAndDecrypt"}
+```
+
+### 7. POST `/decrypt`
+
+HTTP Service to decrypt a string using the password that was used to encrypt it using the `/encrypt` API.
+
+#### Sample POST body
+
+```
+{"data":"555bd2d40c38a372568a322c63a792eadd89bfcea9819366c3d8db789c3fb64766202b5ec57a6282d2e794bffaa94618792de65cc42567", "encpass":"ThisPasswordWillBeUsedToEncryptAndDecrypt"}
+```

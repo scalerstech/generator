@@ -1,4 +1,5 @@
 package utils
+
 import (
 	log "github.com/sirupsen/logrus"
 )
@@ -6,6 +7,7 @@ import (
 type Utils struct {
 	debug bool
 	l *log.Logger
+	*EncDec
 }
 
 func New() *Utils{

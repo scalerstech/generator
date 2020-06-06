@@ -67,6 +67,14 @@ func main() {
 	passgen := handlers.NewPassgen(logger)
 	r.Get("/password", passgen.Handler)
 
+	enc := handlers.NewEncrypter(logger)
+	r.Get("/encrypt", enc.Handler)
+	r.Post("/encrypt", enc.Handler)
+
+	dec := handlers.NewDecrypter(logger)
+	r.Get("/decrypt", dec.Handler)
+	r.Post("/decrypt", dec.Handler)
+
 	httpErr := make(chan error, 1)
 	go func() {
 		logger.Info(fmt.Sprintf("Started server on %s:%s..", host, port))
