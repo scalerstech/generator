@@ -34,15 +34,18 @@ _Windows users will either need to have [WSL install](https://docs.microsoft.com
 
 ## APIs
 
-### GET `/`
+
+### 1. GET `/`
 
 Sample `Hello World` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
-### GET `/ping`
+
+### 2. GET `/ping`
 
 Sample `ping` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
-### GET `/urandom`
+
+### 3. GET `/urandom`
 
 HTTP service to emulate *nix device `/dev/urandom`
 
@@ -50,7 +53,8 @@ HTTP service to emulate *nix device `/dev/urandom`
     
 *   `length` - Number of bytes of data to be returned. Default value: `1024`.
 
-### GET `/fbsdrandom`
+
+### 4. GET `/fbsdrandom`
 
 HTTP service to emulate the FreeBSD device `/dev/urandom`
 
@@ -60,7 +64,8 @@ HTTP service to emulate the FreeBSD device `/dev/urandom`
 
   _Please Note: This API sends data as `application/octet-stream`._
 
-### GET `/password`
+
+### 5. GET `/password`
 
 HTTP service to generate a strong password
 
