@@ -4,6 +4,7 @@ A mircoservice to generate stuff
 The project boilerplate has been created using [go-wagen](https://github.com/groovili/go-wagen) web application generator.
 
 #### Required Tools
+
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - Build Tools
@@ -16,6 +17,7 @@ The project boilerplate has been created using [go-wagen](https://github.com/gro
 _Windows users will either need to have [WSL install](https://docs.microsoft.com/en-us/windows/wsl/install-win10)ed or install GNU `make` using [other ways](https://stackoverflow.com/a/32127632/6670698) _
 
 #### Building
+
 - Clone the repository
     ```
     git clone https://github.com/scalerstech/generator.git
@@ -33,12 +35,15 @@ _Windows users will either need to have [WSL install](https://docs.microsoft.com
 ## APIs
 
 ### GET `/`
+
 Sample `Hello World` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
 ### GET `/ping`
+
 Sample `ping` response as per boilerplate. See [go-wagen](https://github.com/groovili/go-wagen) for details.
 
 ### GET `/urandom`
+
 HTTP service to emulate *nix device `/dev/urandom`
 
 #### Supported Query Parameters
@@ -46,6 +51,7 @@ HTTP service to emulate *nix device `/dev/urandom`
 *   `length` - Number of bytes of data to be returned. Default value: `1024`.
 
 ### GET `/fbsdrandom`
+
 HTTP service to emulate the FreeBSD device `/dev/urandom`
 
 #### Supported Query Parameters
@@ -71,4 +77,3 @@ HTTP service to generate a strong password
 * `lowercase` - Boolean value to ensure if the generated password needs to have lowercase alphabets only
 
 * `repeated` - Boolean value to ensure if the generated password string will have repeated characters or not
-
